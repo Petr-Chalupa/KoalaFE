@@ -1,11 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import Table from "./components/Table.vue";
+
+const data = ref(null);
+
+onMounted(async () => {
+  const response = await fetch("/data.json");
+  data.value = await response.json();
+});
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <Table v-if="data != null" :data="data" />
 </template>
 
-<style scoped></style>
+<style lang="scss" src="@/styles/main.scss"></style>

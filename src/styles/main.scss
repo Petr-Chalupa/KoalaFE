@@ -1,0 +1,72 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-color: $color-background;
+    font-size: 1rem;
+    font-family: system-ui, sans-serif;
+    color: $color-text;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        background-color: $color-background-ternary;
+        color: $color-text-secondary;
+
+        th {
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    tbody {
+        tr.odd_index {
+            background-color: $color-background-secondary;
+        }
+
+        tr > td {
+            text-align: center;
+            padding: 0.1rem 0.5rem;
+        }
+
+        td > .dropdown {
+            background-image: url("/src/icons/dropdown_arrow.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 1.5rem;
+            transition: all ease-in-out $transition-duration;
+
+            &.open {
+                transform: rotate(90deg);
+            }
+        }
+
+        .delete_btn {
+            width: 2rem;
+            cursor: pointer;
+        }
+
+        .children {
+            &.hidden {
+                display: none;
+            }
+
+            > td {
+                padding-left: 1rem;
+            }
+        }
+    }
+}
